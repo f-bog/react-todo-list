@@ -7,12 +7,12 @@
   font-size: 18px;
   padding: 10px;
   border: 2px solid #79acfc;
+  background: none;
 }
 
 .NewTodoForm input {
-  flex-grow: 1;
   transition: 0.2s ease;
-  background: #4287f5;
+
   color: white;
   border-left: 2px solid #79acfc;
   border-bottom: 2px solid #79acfc;
@@ -20,8 +20,8 @@
   border-right: none;
 }
 .NewTodoForm input:focus {
-  background: white;
-  color: black;
+  background: #79acfc;
+  color: white;
 }
 .NewTodoForm button {
   background: none;
