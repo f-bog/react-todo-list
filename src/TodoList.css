@@ -1,0 +1,16 @@
+.TodoList {
+  display: flex;
+  flex-direction: column;
+
+  background: #4287f5;
+
+  max-width: 600px;
+  color: white;
+  margin: 50px auto;
+  -webkit-box-shadow: -9px -9px 0px 0px #79acfc;
+  -moz-box-shadow: -9px -9px 0px 0px #79acfc;
+  box-shadow: -9px -9px 0px 0px #79acfc;
+}
+h1 {
+  padding-left: 20px;
+}

@@ -1,0 +1,35 @@
+.Todo {
+  display: flex;
+  background: #2b76ee;
+  justify-content: space-between;
+  height: 60px;
+  line-height: 30px;
+  padding-left: 30px;
+
+  margin: 10px 0px 0px;
+  -webkit-box-shadow: 9px 0px 0px 0px #79acfc;
+  -moz-box-shadow: 9px 0px 0px 0px #79acfc;
+  box-shadow: 9px 0px 0px 0px #79acfc;
+}
+
+/* p {
+  text-decoration: line-through;
+} */
+
+.Todo-buttons button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 15px;
+  transition: transform 0.2s ease;
+}
+
+.Todo-buttons button:hover {
+  transform: scale(1.5);
+}
+
+.Todo-buttons {
+  margin-top: 5px;
+}

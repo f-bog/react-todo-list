@@ -1,0 +1,35 @@
+.NewTodoForm {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.NewTodoForm input,
+.NewTodoForm button {
+  font-size: 20px;
+  padding: 10px;
+  border: 2px solid #79acfc;
+}
+.NewTodoForm input {
+  flex-grow: 1;
+  transition: 0.2s ease;
+  background: #4287f5;
+  color: white;
+  border-left: 2px solid #79acfc;
+  border-bottom: 2px solid #79acfc;
+  border-top: 2px solid #79acfc;
+  border-right: none;
+}
+.NewTodoForm input:focus {
+  background: white;
+  color: black;
+}
+.NewTodoForm button {
+  background: none;
+  cursor: pointer;
+  color: white;
+  transition: background 0.2s ease;
+}
+.NewTodoForm button:hover {
+  background: #79acfc;
+}
