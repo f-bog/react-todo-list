@@ -12,6 +12,7 @@ class TodoList extends Component {
         { task: 'Make burgers', completed: false },
       ],
     };
+    this.addTodo = this.addTodo.bind(this);
   }
 
   addTodo(newTodo) {
@@ -25,7 +26,7 @@ class TodoList extends Component {
         <h1>Add a Todo</h1>
         <NewTodoForm />
         {this.state.todos.map((todo) => (
-          <Todo task={todo.task} />
+          <Todo task={todo.task} addTodo={this.addTodo} />
         ))}
       </div>
     );
