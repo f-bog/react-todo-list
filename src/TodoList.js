@@ -17,8 +17,9 @@ class TodoList extends Component {
       todos: [...this.state.todos, newTodo],
     });
   }
+
   removeTodo(id) {
-    this.state((prevState) => ({
+    this.setState((prevState) => ({
       todos: prevState.todos.filter((todo) => todo.id !== id),
     }));
   }
@@ -28,7 +29,12 @@ class TodoList extends Component {
         <h1>Add a Todo</h1>
         <NewTodoForm addTodo={this.addTodo} />
         {this.state.todos.map((todo) => (
-          <Todo task={todo.task} key={todo.id} />
+          <Todo
+            task={todo.task}
+            key={todo.id}
+            id={todo.id}
+            remove={this.removeTodo}
+          />
         ))}
       </div>
     );
