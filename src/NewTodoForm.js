@@ -12,19 +12,23 @@ class NewTodoForm extends Component {
   }
 
   handleChange(e) {
-    this.setState({ task: e.target.value, completed: false, id: uuid() });
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addTodo(this.state); // pass data to parent
-    this.setState({ task: '', id: null, completed: null });
+    this.props.addTodo({ ...this.state, id: uuid() }); // pass data to parent
+    this.setState({ task: '', id: null });
   }
   render() {
     return (
       <form className='NewTodoForm' onSubmit={this.handleSubmit}>
+        <label htmlFor='task'>Add a todo</label>
+        <br />
         <input
+          id='task'
           value={this.state.task}
+          name='task'
           type='text'
           placeholder='Add a todo'
           onChange={this.handleChange}

@@ -12,11 +12,12 @@
   box-shadow: 9px 0px 0px 0px #79acfc;
 }
 
-/* p {
+.completed {
   text-decoration: line-through;
-} */
+  color: #79acfc;
+}
 
-.Todo-buttons button {
+.Todo button {
   background: none;
   border: none;
   color: white;
@@ -26,8 +27,8 @@
   transition: transform 0.2s ease;
 }
 
-.Todo-buttons button:hover {
-  transform: scale(1.5);
+.Todo button:hover {
+  transform: scale(1.2);
 }
 
 .Todo-buttons {

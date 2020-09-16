@@ -23,6 +23,7 @@ class TodoList extends Component {
       todos: prevState.todos.filter((todo) => todo.id !== id),
     }));
   }
+
   render() {
     return (
       <div className='TodoList'>

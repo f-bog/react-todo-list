@@ -1,15 +1,14 @@
 .NewTodoForm {
   padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .NewTodoForm input,
 .NewTodoForm button {
-  font-size: 20px;
+  font-size: 18px;
   padding: 10px;
   border: 2px solid #79acfc;
 }
+
 .NewTodoForm input {
   flex-grow: 1;
   transition: 0.2s ease;
