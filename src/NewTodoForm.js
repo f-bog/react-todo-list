@@ -12,11 +12,13 @@ class NewTodoForm extends Component {
   }
 
   handleChange(e) {
-    this.setState({ task: e.target.value, completed: false, id: uuid(); });
+    this.setState({ task: e.target.value, completed: false, id: uuid() });
   }
 
   handleSubmit(e) {
-    e.preventDefault;
+    e.preventDefault();
+    this.props.addTodo(this.state); // pass data to parent
+    this.setState({ task: '', id: null, completed: null });
   }
   render() {
     return (
