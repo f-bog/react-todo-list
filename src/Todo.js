@@ -7,11 +7,10 @@ class Todo extends Component {
     super(props);
     this.state = {
       isEditing: false,
-      completed: false,
       task: this.props.task,
     };
     this.handleRemove = this.handleRemove.bind(this);
-    this.toggleCompleted = this.toggleCompleted.bind(this);
+    this.handleComplete = this.handleComplete.bind(this)
     this.toggleEdit = this.toggleEdit.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -20,9 +19,11 @@ class Todo extends Component {
   handleRemove() {
     this.props.remove(this.props.id);
   }
-  toggleCompleted() {
-    this.setState((prevState) => ({ completed: !prevState.completed }));
+
+  handleComplete(e) {
+    this.props.toggleComplete(this.props.id)
   }
+
   toggleEdit() {
     this.setState((prevState) => ({ isEditing: !prevState.isEditing }));
   }
@@ -52,12 +53,12 @@ class Todo extends Component {
     } else {
       result = (
         <>
-          <button
-            onClick={this.toggleCompleted}
-            className={this.state.completed ? `completed` : null}
+          <p
+            onClick={this.handleComplete}
+            className={this.props.completed ? `completed` : null}
           >
             {this.props.task}
-          </button>
+          </p>
           <div className='Todo-buttons'>
             <button onClick={this.toggleEdit}>
               <FontAwesomeIcon icon={faPencilAlt} />

@@ -17,7 +17,7 @@ class NewTodoForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addTodo({ ...this.state, id: uuid() }); // pass data to parent
+    this.props.addTodo({ ...this.state, id: uuid(), completed: false }); // pass data to parent
     this.setState({ task: '', id: null });
   }
   render() {
