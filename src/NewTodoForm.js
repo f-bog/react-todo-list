@@ -17,9 +17,13 @@ class NewTodoForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    if (this.state.task === '') {
+      return;
+    }
     this.props.addTodo({ ...this.state, id: uuidv4(), completed: false }); // pass data to parent
     this.setState({ task: '', id: null });
   }
+
   render() {
     return (
       <form className='NewTodoForm' onSubmit={this.handleSubmit}>
