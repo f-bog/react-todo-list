@@ -1,77 +1,63 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import './Todo.css';
-class Todo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isEditing: false,
-      task: this.props.task,
-    };
-    this.handleRemove = this.handleRemove.bind(this);
-    this.handleComplete = this.handleComplete.bind(this)
-    this.toggleEdit = this.toggleEdit.bind(this);
-    this.handleSave = this.handleSave.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
+function Todo({ id, completed, task, updateTodo, remove, toggleComplete }) {
+  const [value, setValue] = useState(task);
+  const [isEditing, setEditing] = useState(false);
 
-  handleRemove() {
-    this.props.remove(this.props.id);
-  }
+  const handleRemove = () => {
+    remove(id);
+  };
 
-  handleComplete(e) {
-    this.props.toggleComplete(this.props.id)
-  }
+  const handleComplete = e => {
+    toggleComplete(id);
+  };
 
-  toggleEdit() {
-    this.setState((prevState) => ({ isEditing: !prevState.isEditing }));
-  }
-  handleChange(e) {
-    this.setState({ task: e.target.value });
-  }
-  handleSave(e) {
+  const toggleEdit = () => {
+    setEditing({ isEditing: !isEditing });
+  };
+  const handleChange = e => {
+    setValue(e.target.value);
+  };
+  const handleSave = e => {
     e.preventDefault();
-    this.props.updateTodo(this.props.id, this.state.task);
-    this.setState({ isEditing: false });
+    updateTodo(id, task);
+    setEditing(false);
+  };
+
+  let result;
+  if (isEditing) {
+    result = (
+      <form onSubmit={handleSave}>
+        <input
+          value={value}
+          name='task'
+          type='text'
+          onChange={handleChange}
+          onSubmit={handleSave}
+        ></input>
+        <button>Save</button>
+      </form>
+    );
+  } else {
+    result = (
+      <>
+        <p onClick={handleComplete} className={completed ? `completed` : null}>
+          {task}
+        </p>
+        <div className='Todo-buttons'>
+          <button onClick={toggleEdit}>
+            <FontAwesomeIcon icon={faPencilAlt} />
+          </button>
+          <button onClick={handleRemove}>
+            <FontAwesomeIcon icon={faTrash} />
+          </button>
+        </div>
+      </>
+    );
   }
-  render() {
-    let result;
-    if (this.state.isEditing) {
-      result = (
-        <form onSubmit={this.handleSave}>
-          <input
-            value={this.state.task}
-            name='task'
-            type='text'
-            onChange={this.handleChange}
-            onSubmit={this.handleSave}
-          ></input>
-          <button>Save</button>
-        </form>
-      );
-    } else {
-      result = (
-        <>
-          <p
-            onClick={this.handleComplete}
-            className={this.props.completed ? `completed` : null}
-          >
-            {this.props.task}
-          </p>
-          <div className='Todo-buttons'>
-            <button onClick={this.toggleEdit}>
-              <FontAwesomeIcon icon={faPencilAlt} />
-            </button>
-            <button onClick={this.handleRemove}>
-              <FontAwesomeIcon icon={faTrash} />
-            </button>
-          </div>
-        </>
-      );
-    }
-    return <div className='Todo'>{result}</div>;
-  }
+  return <div className='Todo'>{result}</div>;
 }
 
 export default Todo;
