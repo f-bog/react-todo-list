@@ -40,10 +40,12 @@ function TodoList() {
       <NewTodoForm addTodo={addTodo} />
       {todos.map(todo => (
         <Todo
-          task={todo.task}
+          // task={todo.task}
+          // key={todo.id}
+          // id={todo.id}
+          // completed={todo.completed}
+          {...todo}
           key={todo.id}
-          id={todo.id}
-          completed={todo.completed}
           remove={removeTodo}
           updateTodo={updateTodo}
           toggleComplete={toggleComplete}
