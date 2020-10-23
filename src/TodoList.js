@@ -4,9 +4,8 @@ import Todo from './Todo';
 import './TodoList.css';
 
 function TodoList() {
-  const [todos, setTodos] = useState(
-    JSON.parse(window.localStorage.getItem('todos')) || String([])
-  );
+  const localTodoStorage = JSON.parse(window.localStorage.getItem('todos'));
+  const [todos, setTodos] = useState(localTodoStorage || []);
 
   useEffect(() => {
     window.localStorage.setItem('todos', JSON.stringify(todos));
