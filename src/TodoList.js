@@ -5,7 +5,7 @@ import './TodoList.css';
 
 function TodoList() {
   const [todos, setTodos] = useState(
-    JSON.parse(window.localStorage.getItem('todos' || String([])))
+    JSON.parse(window.localStorage.getItem('todos')) || String([])
   );
 
   useEffect(() => {
