@@ -22,7 +22,7 @@ function Todo({ id, completed, task, updateTodo, remove, toggleComplete }) {
   };
   const handleSave = e => {
     e.preventDefault();
-    updateTodo(id, task);
+    updateTodo(id, value);
     setEditing(false);
   };
 
@@ -44,7 +44,7 @@ function Todo({ id, completed, task, updateTodo, remove, toggleComplete }) {
     result = (
       <>
         <p onClick={handleComplete} className={completed ? `completed` : null}>
-          {task}
+          {value}
         </p>
         <div className='Todo-buttons'>
           <button onClick={toggleEdit}>
