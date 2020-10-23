@@ -7,7 +7,6 @@ function NewTodoForm({ addTodo }) {
   const handleChange = e => {
     setTodo({ task: e.target.value });
   };
-
   const handleSubmit = e => {
     e.preventDefault();
     if (todo.task === '') {
