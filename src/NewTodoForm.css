@@ -1,22 +1,32 @@
 .NewTodoForm {
-  padding: 20px;
+  width: 100%;
+  margin: 0 auto;
 }
 
+.NewTodoForm label {
+  width: 80%;
+  margin: 0 auto;
+  display: block;
+}
 .NewTodoForm input,
 .NewTodoForm button {
   font-size: 18px;
-  padding: 10px;
+  padding: 10px 0px 10px 10px;
   border: 2px solid #79acfc;
   background: none;
 }
 
 .NewTodoForm input {
   transition: 0.2s ease;
-
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
   color: white;
   border: 2px solid #79acfc;
 }
-.NewTodoForm input:focus {
+.NewTodoForm input:focus,
+.NewTodoForm input:hover {
   background: #79acfc;
   color: white;
 }

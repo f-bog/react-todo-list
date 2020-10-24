@@ -16,7 +16,9 @@ function NewTodoForm({ addTodo }) {
 
   return (
     <form className='NewTodoForm' onSubmit={handleSubmit}>
-      <label htmlFor='task'>Add a todo</label>
+      <label htmlFor='task'>
+        <h1>Todo List</h1>
+      </label>
       <br />
       <input
         id='task'
@@ -26,7 +28,7 @@ function NewTodoForm({ addTodo }) {
         placeholder='Add a todo'
         onChange={setTodo}
       ></input>
-      <button>New Todo</button>
+      {/* <button>New Todo</button> */}
     </form>
   );
 }

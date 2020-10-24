@@ -41,7 +41,6 @@ function TodoList() {
 
   return (
     <div className='TodoList'>
-      <h1>Todo List!</h1>
       <NewTodoForm addTodo={addTodo} />
       {todos.map(todo => (
         <Todo

@@ -1,39 +1,46 @@
 .Todo {
-  display: flex;
   background: #2b76ee;
-  justify-content: space-between;
-
-  line-height: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
   margin: 10px 0px 0px;
+  width: 100%;
 }
-
+.Todo-item {
+  width: 80%;
+  margin: 0 auto;
+  min-height: 60px;
+  line-height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
 .completed {
   text-decoration: line-through;
   color: #79acfc;
 }
-.Todo input,
-.Todo button {
-  margin-top: 7px;
+
+.Todo-item input {
+  height: 2rem;
+  padding-left: 10px;
+  margin: 1rem 0;
+}
+.Todo-item input,
+.Todo-item button {
   font-size: 18px;
   background: #2b76ee;
-  padding: 10px;
+
   border: 2px solid #79acfc;
   color: white;
   cursor: pointer;
 }
-.Todo button {
+.Todo-item button {
+  padding: 10px 0px 10px 10px;
   background: none;
   border: none;
-
   transition: transform 0.2s ease;
 }
 
-.Todo button:hover {
+.Todo-item button:hover {
   transform: scale(1.2);
 }
 
 .Todo-buttons {
-  margin-top: 5px;
+  margin-top: 12px;
 }

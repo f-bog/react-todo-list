@@ -32,7 +32,7 @@ function Todo({ id, completed, task, updateTodo, remove, toggleComplete }) {
   let result;
   if (isEditing) {
     result = (
-      <form onSubmit={handleSave}>
+      <form className='Todo-item' onSubmit={handleSave}>
         <input
           value={value}
           name='task'
@@ -45,7 +45,7 @@ function Todo({ id, completed, task, updateTodo, remove, toggleComplete }) {
     );
   } else {
     result = (
-      <>
+      <div className='Todo-item'>
         <p onClick={handleComplete} className={completed ? `completed` : null}>
           {value}
         </p>
@@ -57,7 +57,7 @@ function Todo({ id, completed, task, updateTodo, remove, toggleComplete }) {
             <FontAwesomeIcon icon={faTrash} />
           </button>
         </div>
-      </>
+      </div>
     );
   }
   return <div className='Todo'>{result}</div>;
