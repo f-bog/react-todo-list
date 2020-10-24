@@ -7,7 +7,7 @@ function NewTodoForm({ addTodo }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (todo.task === '') {
+    if (todo === '') {
       return;
     }
     addTodo({ task: todo, id: uuidv4(), completed: false }); // pass data to parent

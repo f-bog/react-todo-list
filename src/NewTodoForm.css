@@ -14,10 +14,7 @@
   transition: 0.2s ease;
 
   color: white;
-  border-left: 2px solid #79acfc;
-  border-bottom: 2px solid #79acfc;
-  border-top: 2px solid #79acfc;
-  border-right: none;
+  border: 2px solid #79acfc;
 }
 .NewTodoForm input:focus {
   background: #79acfc;
