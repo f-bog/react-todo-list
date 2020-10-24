@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import useInputState from './hooks/useInputState';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import './Todo.css';
 function Todo({ id, completed, task, updateTodo, remove, toggleComplete }) {
-  const [value, setValue] = useState(task);
+  // const [value, setValue] = useState(task);
   const [isEditing, setEditing] = useState(false);
+
+  const [value, handleChange] = useInputState(task);
 
   const handleRemove = () => {
     remove(id);
@@ -17,9 +20,9 @@ function Todo({ id, completed, task, updateTodo, remove, toggleComplete }) {
   const toggleEdit = () => {
     setEditing({ isEditing: !isEditing });
   };
-  const handleChange = e => {
-    setValue(e.target.value);
-  };
+  // const handleChange = e => {
+  //   setValue(e.target.value);
+  // };
   const handleSave = e => {
     e.preventDefault();
     updateTodo(id, value);

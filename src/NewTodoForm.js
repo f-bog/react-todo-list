@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useInputState from './hooks/useInputState';
 import './NewTodoForm.css';
 const { v4: uuidv4 } = require('uuid');
 function NewTodoForm({ addTodo }) {
-  const [todo, setTodo] = useState({ task: '' });
+  const [todo, setTodo, reset] = useInputState('');
 
-  const handleChange = e => {
-    setTodo({ task: e.target.value });
-  };
   const handleSubmit = e => {
     e.preventDefault();
     if (todo.task === '') {
       return;
     }
-    addTodo({ task: todo.task, id: uuidv4(), completed: false }); // pass data to parent
-    setTodo({ task: '', id: null });
+    addTodo({ task: todo, id: uuidv4(), completed: false }); // pass data to parent
+    reset();
   };
 
   return (
@@ -22,11 +20,11 @@ function NewTodoForm({ addTodo }) {
       <br />
       <input
         id='task'
-        value={todo.task}
+        value={todo}
         name='task'
         type='text'
         placeholder='Add a todo'
-        onChange={handleChange}
+        onChange={setTodo}
       ></input>
       <button>New Todo</button>
     </form>
