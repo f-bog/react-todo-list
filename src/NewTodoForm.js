@@ -1,16 +1,16 @@
 import React from 'react';
 import useInputState from './hooks/useInputState';
 import './NewTodoForm.css';
-const { v4: uuidv4 } = require('uuid');
+
 function NewTodoForm({ addTodo }) {
-  const [todo, setTodo, reset] = useInputState('');
+  const [value, setTodo, reset] = useInputState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (todo === '') {
+    if (value === '') {
       return;
     }
-    addTodo({ task: todo, id: uuidv4(), completed: false }); // pass data to parent
+    addTodo(value); // pass data to parent
     reset();
   };
 
@@ -22,13 +22,12 @@ function NewTodoForm({ addTodo }) {
       <br />
       <input
         id='task'
-        value={todo}
+        value={value}
         name='task'
         type='text'
         placeholder='Add a todo'
         onChange={setTodo}
       ></input>
-      {/* <button>New Todo</button> */}
     </form>
   );
 }
