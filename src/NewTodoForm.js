@@ -1,21 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { DispatchContext } from './contexts/todos.context';
 import useInputState from './hooks/useInputState';
 import './NewTodoForm.css';
 
 function NewTodoForm({ addTodo }) {
-  const [value, setTodo, reset] = useInputState('');
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (value === '') {
-      return;
-    }
-    addTodo(value); // pass data to parent
-    reset();
-  };
-
+  const [value, handleChange, reset] = useInputState('');
+  const dispatch = useContext(DispatchContext);
   return (
-    <form className='NewTodoForm' onSubmit={handleSubmit}>
+    <form
+      className='NewTodoForm'
+      onSubmit={e => {
+        e.preventDefault();
+        dispatch({ type: 'ADD', task: value });
+        reset();
+      }}
+    >
       <label htmlFor='task'>
         <h1>Todo List</h1>
       </label>
@@ -26,7 +25,7 @@ function NewTodoForm({ addTodo }) {
         name='task'
         type='text'
         placeholder='Add a todo'
-        onChange={setTodo}
+        onChange={handleChange}
       ></input>
     </form>
   );

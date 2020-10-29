@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useInputState from './hooks/useInputState';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import useToggleState from './hooks/useToggleState';
 import './Todo.css';
+import { DispatchContext } from './contexts/todos.context';
+function Todo({ id, completed, task }) {
+  const dispatch = useContext(DispatchContext);
 
-function Todo({ id, completed, task, editTodo, removeTodo, toggleTodo }) {
   const [isEditing, setEditing] = useToggleState(false);
 
-  const [value, handleChange, reset] = useInputState(task);
+  const [value, handleChange] = useInputState(task);
 
   let result;
   if (isEditing) {
@@ -17,9 +19,9 @@ function Todo({ id, completed, task, editTodo, removeTodo, toggleTodo }) {
         className='Todo-item'
         onSubmit={e => {
           e.preventDefault();
-          editTodo(id, value);
+          dispatch({ type: 'EDIT', id: id, newTask: value });
           setEditing();
-          reset();
+          // reset();
         }}
       >
         <input
@@ -35,7 +37,7 @@ function Todo({ id, completed, task, editTodo, removeTodo, toggleTodo }) {
     result = (
       <div className='Todo-item'>
         <p
-          onClick={() => toggleTodo(id)}
+          onClick={() => dispatch({ type: 'TOGGLE', id: id })}
           className={completed ? `completed` : null}
         >
           {task}
@@ -44,7 +46,7 @@ function Todo({ id, completed, task, editTodo, removeTodo, toggleTodo }) {
           <button onClick={setEditing}>
             <FontAwesomeIcon icon={faPencilAlt} />
           </button>
-          <button onClick={() => removeTodo(id)}>
+          <button onClick={() => dispatch({ type: 'REMOVE', id: id })}>
             <FontAwesomeIcon icon={faTrash} />
           </button>
         </div>
