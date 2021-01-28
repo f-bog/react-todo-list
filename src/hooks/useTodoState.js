@@ -1,5 +1,5 @@
 import useLocalStorageState from './useLocalStorageState';
-const uuidv4 = require('uuid/v4');
+const { v4: uuidv4 } = require('uuid');
 export default initialTodos => {
   const [todos, setTodos] = useLocalStorageState('todos', initialTodos);
   return {
